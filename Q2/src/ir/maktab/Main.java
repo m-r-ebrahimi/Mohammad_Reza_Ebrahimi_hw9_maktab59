@@ -8,7 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
         ArrayList<Integer> numbers = new ArrayList<>();
-        fill(numbers);
+        fill(9, numbers);
+        System.out.println(numbers);
         System.out.println(find(numbers));
     }
 
@@ -42,7 +43,18 @@ public class Main {
             makePair(numbers, result, numbers.size());
         else
             makePair(numbers, result, numbers.size() - 1);
-        return result;
+
+        return check(result);
+
+    }
+
+    private static ArrayList<ArrayList<Integer>> check(ArrayList<ArrayList<Integer>> result) {
+        ArrayList<ArrayList<Integer>> temp = new ArrayList<>();
+        for (ArrayList<Integer> group : result) {
+            if (group.get(0) <= group.get(1))
+                temp.add(group);
+        }
+        return temp;
     }
 
     public static void makePair(ArrayList<Integer> numbers, ArrayList<ArrayList<Integer>> result, int size) {
@@ -57,4 +69,6 @@ public class Main {
             }
         }
     }
+
+
 }
